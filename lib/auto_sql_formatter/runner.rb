@@ -1,5 +1,5 @@
-require "sql_formatter/formatter"
-require "sql_formatter/searcher"
+require "auto_sql_formatter/formatter"
+require "auto_sql_formatter/searcher"
 
 module AutoSqlFormatter
   module Runner

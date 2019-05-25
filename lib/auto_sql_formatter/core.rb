@@ -1,4 +1,4 @@
-require "sql_formatter/runner"
+require "auto_sql_formatter/runner"
 
 module AutoSqlFormatter
   class Core
@@ -15,7 +15,6 @@ module AutoSqlFormatter
         result = Runner.new(file.key).do
         display(file[:state] = result)
       end
-      puts "========Completed！！！========="
       puts "========Completed！！！========="
     end
 
