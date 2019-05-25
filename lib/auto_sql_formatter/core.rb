@@ -6,16 +6,23 @@ module AutoSqlFormatter
     attr_reader :workdir
 
     def initialize(dir = DEFAULT_DIR)
-      @workdir = dir
+      @workdir = dir || DEFAULT_DIR
     end
 
     def execute
       puts "========Start to format sql========="
-      targets.each do |file|
-        result = Runner.new(file.key).do
+
+      files.each do |file|
+        result = Runner.do file[:path]
         display(file[:state] = result)
       end
-      puts "========Completed！！！========="
+
+      puts "===========Completed！！！============"
+
+      puts <<-STR
+        Targets and statuses are
+        #{files.each { |file| "・#{file[:path]}  #{file[:status]}/n"}}
+      STR
     end
 
     private
@@ -26,9 +33,8 @@ module AutoSqlFormatter
     #   { 'path' => 'spec/sql_formatter./sql_formatter._spec.rb', 'state' => 'none' },
     #   { 'path' => 'spec/sql_formatter./sql_formatter._spec.rb', 'state' => 'success' }
     # ]
-    # これで表示系はいじれる
-    def targets
-      @files = Dir.glob("#{workdir}/**/*.rb").map { |file| { file => nil, state: nil } }
+    def files
+      @files ||= Dir.glob("#{workdir}/**/*.rb").map { |file| { path: file, state: nil } }
     end
 
     # 実行中に SSSSS・・・E・SSSSみたいに表示される

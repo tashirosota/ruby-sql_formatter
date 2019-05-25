@@ -1,19 +1,18 @@
 require 'uri'
 require 'net/http'
 require 'json'
+
 module AutoSqlFormatter
-  module Formatter
+  class Formatter
     DEFAULT_INDENT = 2
-    DEFAULT_CASE = 'upper'.freeze
+    DEFAULT_CASE = 'upper'
     API_URI = 'https://sqlformat.org/api/v1/format'.freeze
     HEADERS = { 'Content-Type' => 'application/x-www-form-urlencoded' }.freeze
 
     class << self
       def do(sqls)
-        sqls.map { |sql| { from: sql, to: format(sql) } }
+        Array(sqls).map { |sql| { from: sql, to: format(sql) } }
       end
-
-      private
 
       def format(sql)
         uri = URI(API_URI)
