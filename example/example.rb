@@ -36,4 +36,8 @@ a      asdfasdfasdfasdfsh
     HAVING 100 > Max(#{hogeo})
     "
   end
+
+  def hogeo
+    'test'
+  end
 end
