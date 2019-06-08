@@ -1,4 +1,4 @@
-# AutoSqlFormatter ※ In development
+# AutoSqlFormatter
 ## Installation
 
 Add this line to your application's Gemfile:
