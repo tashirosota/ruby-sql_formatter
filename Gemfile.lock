@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    auto_sql_formatter (0.1.1)
+    auto_sql_formatter (0.1.2)
       export_strings (~> 0.2)
 
 GEM
