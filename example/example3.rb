@@ -1,10 +1,9 @@
-class Example
-
+class Example3
   def str
     <<-SQL
       sasdfasdf
       adsafsdf
- ssdfghs
+      ssdfghs
  dfasdfa
       dfasdf
 a      asdfasdfasdfasdfsh
@@ -20,18 +19,18 @@ a      asdfasdfasdfasdfsh
   def sql2
     "
       SELECT * 
- from users 
+  from users 
       where user.id > 100
-   JOIN profiles ON profiles.user_id =users.id
+      JOIN profiles ON profiles.user_id =users.id
     "
   end
 
   def sql3
     "
- SELECT * 
+    SELECT * 
   from users 
     where user.id > 100
-       JOIN profiles ON profiles.user_id =users.id
+    JOIN profiles ON profiles.user_id =users.id
     GROUP BY gender
     HAVING 100 > Max(#{hogeo})
     "

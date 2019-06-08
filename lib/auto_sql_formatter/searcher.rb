@@ -1,14 +1,10 @@
-require 'ripper'
+require 'export_strings'
+
 module AutoSqlFormatter
   class Searcher
     class << self
       def do(file_text)
-        pp r = Ripper.sexp(file_text)
-        pp r = Ripper.lex(file_text)
-        r = Ripper.lex(file_text).reduce([]) do |acc, element|
-          element[1] == :on_tstring_content && sql?(element[2]) ? acc.push(element[2]) : acc
-        end
-        pp r
+        ExportStrings::Core.execute(file_text).each_with_object([]) { |str, memo| memo << str if sql?(str) }
       end
 
       private
