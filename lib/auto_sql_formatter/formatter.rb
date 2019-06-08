@@ -21,7 +21,6 @@ module AutoSqlFormatter
 
         body = URI.encode_www_form(sql: sql, keyword_case: DEFAULT_CASE)
 
-        '===Net::HTTP==='
         response = https.post(uri.path, body, HEADERS)
         JSON.parse(response.body)['result']
       end
