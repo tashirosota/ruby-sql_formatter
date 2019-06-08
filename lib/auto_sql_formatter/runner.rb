@@ -16,7 +16,7 @@ module AutoSqlFormatter
       #   }
       # ]
       results = Formatter.do sqls
-      results.each { |result| file_text.gsub! /#{result[:from]}/m, result[:to] }
+      results.each { |result| file_text.gsub! result[:from], result[:to] }
       return 'success' if File.open(path, 'w') { |f| f.write file_text }
     end
     class Error < StandardError; end
